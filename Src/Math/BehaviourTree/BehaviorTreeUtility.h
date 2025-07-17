@@ -30,6 +30,7 @@ enum class NodeName {
 	Inverter,
 	CheckFarPlayer,
 	CheckNearPlayer,
+	CheckIsReachedTargetPoint,
 	ChasePlayerLeaf,
 	CircleAttackLeaf,
 	DebugDrawLeef,
@@ -37,6 +38,7 @@ enum class NodeName {
 	AlwaysSuccessLeaf,
 	EscapeFromPlayerLeaf,
 	WaitLeaf,
+	MoveToTargetPointLeaf,
 	NameEnd, // 要素数取得用
 };
 
@@ -44,18 +46,20 @@ enum class NodeName {
 /// 各ノードの名前とタイプのマッピング
 /// </summary>
 static std::map<NodeName, NodeType> NODE_MAP = {
-	{NodeName::Sequence, NodeType::Composite},
-	{NodeName::Selector, NodeType::Composite},
-	{NodeName::Inverter, NodeType::Decorator},
-	{NodeName::CheckFarPlayer, NodeType::Branch},
-	{NodeName::CheckNearPlayer, NodeType::Branch},
-	{NodeName::ChasePlayerLeaf, NodeType::Leaf},
-	{NodeName::CircleAttackLeaf, NodeType::Leaf},
-	{NodeName::DebugDrawLeef, NodeType::Leaf},
-	{NodeName::AlwaysFailLeaf, NodeType::Leaf},
-	{NodeName::AlwaysSuccessLeaf, NodeType::Leaf},
-	{NodeName::EscapeFromPlayerLeaf, NodeType::Leaf},
-	{NodeName::WaitLeaf, NodeType::Leaf},
+	{NodeName::Sequence,					NodeType::Composite},
+	{NodeName::Selector,					NodeType::Composite},
+	{NodeName::Inverter,					NodeType::Decorator},
+	{NodeName::CheckFarPlayer,				NodeType::Branch},
+	{NodeName::CheckNearPlayer,				NodeType::Branch},
+	{NodeName::CheckIsReachedTargetPoint,	NodeType::Branch },
+	{NodeName::ChasePlayerLeaf,				NodeType::Leaf},
+	{NodeName::CircleAttackLeaf,			NodeType::Leaf},
+	{NodeName::DebugDrawLeef,				NodeType::Leaf},
+	{NodeName::AlwaysFailLeaf,				NodeType::Leaf},
+	{NodeName::AlwaysSuccessLeaf,			NodeType::Leaf},
+	{NodeName::EscapeFromPlayerLeaf,		NodeType::Leaf},
+	{NodeName::WaitLeaf,					NodeType::Leaf},
+	{NodeName::MoveToTargetPointLeaf,		NodeType::Leaf},
 };
 
 /// <summary>

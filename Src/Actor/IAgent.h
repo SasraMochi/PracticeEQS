@@ -11,4 +11,6 @@ public:
 
 	virtual const float get_health() const = 0;
 	virtual void attack() = 0;
+
+	virtual void set_target_position() = 0;
 };

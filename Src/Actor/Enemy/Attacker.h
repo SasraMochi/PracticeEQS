@@ -40,6 +40,8 @@ public:
 	const float get_health() const override;
 	void attack() override;
 
+	void set_target_position() override;
+
 private:
 	void move(float delta_time);
 

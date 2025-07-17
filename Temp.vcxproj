@@ -178,6 +178,7 @@
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviorTreeUtility.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckIsReachedTargetPoint.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckFarPlayer.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BranchNode\CheckNearPlayer.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\Selector.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\CompositeNode\Sequence.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\LeafNode\EscapeFromPlayerLeaf.cpp" />
+    <ClCompile Include="Src\Math\BehaviourTree\LeafNode\MoveToTargetPointLeaf.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\LeafNode\WaitLeaf.cpp" />
     <ClCompile Include="Src\Math\MyRectangle.cpp" />
     <ClCompile Include="Src\Math\MyTimer.cpp" />
@@ -227,6 +229,7 @@
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviorTreeUtility.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\BranchNode\CheckIsReachedTargetPoint.h" />
     <ClInclude Include="Src\Math\BehaviourTree\CompositeNode\CompositeNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\BranchNodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BranchNode\CheckFarPlayer.h" />
@@ -241,6 +244,7 @@
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\EscapeFromPlayerLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\CircleAttackLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\LeafNodeBase.h" />
+    <ClInclude Include="Src\Math\BehaviourTree\LeafNode\MoveToTargetPointLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\LeafNode\WaitLeaf.h" />
     <ClInclude Include="Src\Math\BehaviourTree\NodeBase.h" />
     <ClInclude Include="Src\Math\BehaviourTree\NodeResult.h" />

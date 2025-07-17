@@ -81,6 +81,14 @@ void Attacker::draw_transparent() const
 void Attacker::draw_gui() const
 {
 	mCollider.draw_debug();
+
+	// ターゲットポイントを可視化
+	if (mpBlackBoard->has_key("TargetPos")) 
+	{
+		auto point = mpBlackBoard->get_value<Vector2>("TargetPos");
+
+		DrawCircle(point.x, point.y, 5.f, GetColor(0, 0, 255), false);
+	}
 }
 
 void Attacker::react(Actor& other)
@@ -119,6 +127,15 @@ void Attacker::attack()
 	MyRectangle attack_collider{ min, max };
 
 	mpWorld->add_actor(new AttackCollider{ mpWorld,attack_collider, mTag, 15.f , 10.f });
+}
+
+void Attacker::set_target_position()
+{
+	// TODO ここに最適な座標を求める処理
+	Vector2 target_pos{ 2500, 100.f };
+
+	// 座標をセット
+	mpBlackBoard->set_value<Vector2>("TargetPos", target_pos);
 }
 
 void Attacker::move(float delta_time)

@@ -7,6 +7,7 @@
 #include "Math/BehaviourTree/DecoratorNode/Inverter.h"
 #include "Math/BehaviourTree/BranchNode/CheckNearPlayer.h"
 #include "Math/BehaviourTree/BranchNode/CheckFarPlayer.h"
+#include "Math/BehaviourTree/BranchNode/CheckIsReachedTargetPoint.h"
 #include "Math/BehaviourTree/LeafNode/WaitLeaf.h"
 #include "Math/BehaviourTree/LeafNode/ChasePlayerLeaf.h"
 #include "Math/BehaviourTree/LeafNode/EscapeFromPlayerLeaf.h"
@@ -14,6 +15,7 @@
 #include "Math/BehaviourTree/LeafNode/AlwaysSuccessLeaf.h"
 #include "Math/BehaviourTree/LeafNode/AlwaysFailLeaf.h"
 #include "Math/BehaviourTree/LeafNode/DebugDrawLeaf.h"
+#include "Math/BehaviourTree/LeafNode/MoveToTargetPointLeaf.h"
 
 #include "json.hpp"
 using json = nlohmann::json;
@@ -94,6 +96,12 @@ INode* BehaviourTreeBuilder::BuildAttackerTree(std::string file_path, BlackBoard
 				float limitDistance = nodeJson["limit_distance"].get<float>();
 				node = new CheckFarPlayer(blackboard, buildNode(trueChildId), buildNode(falseChildId), limitDistance);
 			}
+			else if (name == "CheckIsReachedTargetPoint")
+			{
+				int trueChildId = nodeJson["true_child"].get<int>();
+				int falseChildId = nodeJson["false_child"].get<int>();
+				node = new CheckIsReachedTargetPoint(blackboard, buildNode(trueChildId), buildNode(falseChildId));
+			}
 
 			// --- Leafノード ---
 			else if (name == "WaitLeaf")
@@ -125,6 +133,10 @@ INode* BehaviourTreeBuilder::BuildAttackerTree(std::string file_path, BlackBoard
 			{
 				int text = nodeJson["text"].get<int>();
 				node = new DebugDrawLeaf(blackboard, text);
+			}
+			else if (name == "MoveToTargetPointLeaf")
+			{
+				node = new MoveToTargetPointLeaf(blackboard);
 			}
 
 			// --- 未知のノード ---

@@ -3,8 +3,11 @@
 #include "Scene/GamePlayScene.h"
 #include "Scene/EditBehaviorTreeScene.h"
 
+#include "Image.h"
+
 Game::Game(const int screenX, const int screenY) {
-	SetGraphMode(screenX, screenY, 32);
+	Image::Load();
+	SetGraphMode(screenX, screenY, 128);
 	SetWindowSize(screenX, screenY);
 }
 

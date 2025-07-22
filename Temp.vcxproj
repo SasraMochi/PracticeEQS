@@ -175,6 +175,7 @@
     <ClCompile Include="Src\Actor\Enemy\Attacker.cpp" />
     <ClCompile Include="SRC\ACTOR\Player.cpp" />
     <ClCompile Include="Src\Game.cpp" />
+    <ClCompile Include="Src\Image.cpp" />
     <ClCompile Include="Src\main.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviorTreeUtility.cpp" />
     <ClCompile Include="Src\Math\BehaviourTree\BehaviourTreeBulider.cpp" />
@@ -206,34 +207,6 @@
     <ClCompile Include="Src\World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="external\commata\char_input.hpp" />
-    <ClInclude Include="external\commata\detail\allocation_only_allocator.hpp" />
-    <ClInclude Include="external\commata\detail\base_parser.hpp" />
-    <ClInclude Include="external\commata\detail\base_source.hpp" />
-    <ClInclude Include="external\commata\detail\buffer_control.hpp" />
-    <ClInclude Include="external\commata\detail\buffer_size.hpp" />
-    <ClInclude Include="external\commata\detail\formatted_output.hpp" />
-    <ClInclude Include="external\commata\detail\full_ebo.hpp" />
-    <ClInclude Include="external\commata\detail\handler_decorator.hpp" />
-    <ClInclude Include="external\commata\detail\key_chars.hpp" />
-    <ClInclude Include="external\commata\detail\member_like_base.hpp" />
-    <ClInclude Include="external\commata\detail\propagation_controlled_allocator.hpp" />
-    <ClInclude Include="external\commata\detail\string_value.hpp" />
-    <ClInclude Include="external\commata\detail\typing_aid.hpp" />
-    <ClInclude Include="external\commata\detail\write_ntmbs.hpp" />
-    <ClInclude Include="external\commata\field_handling.hpp" />
-    <ClInclude Include="external\commata\field_scanners.hpp" />
-    <ClInclude Include="external\commata\parse_csv.hpp" />
-    <ClInclude Include="external\commata\parse_error.hpp" />
-    <ClInclude Include="external\commata\parse_result.hpp" />
-    <ClInclude Include="external\commata\parse_tsv.hpp" />
-    <ClInclude Include="external\commata\record_extractor.hpp" />
-    <ClInclude Include="external\commata\stored_table.hpp" />
-    <ClInclude Include="external\commata\table_pull.hpp" />
-    <ClInclude Include="external\commata\table_scanner.hpp" />
-    <ClInclude Include="external\commata\text_error.hpp" />
-    <ClInclude Include="external\commata\text_value_translation.hpp" />
-    <ClInclude Include="external\commata\wrapper_handlers.hpp" />
     <ClInclude Include="external\imgui\backends\imgui_impl_dx11.h" />
     <ClInclude Include="external\imgui\backends\imgui_impl_win32.h" />
     <ClInclude Include="external\imgui\imconfig.h" />
@@ -254,6 +227,7 @@
     <ClInclude Include="Src\Actor\Enemy\Attacker.h" />
     <ClInclude Include="Src\Actor\IAgent.h" />
     <ClInclude Include="Src\Actor\Player.h" />
+    <ClInclude Include="Src\Image.h" />
     <ClInclude Include="Src\Game.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviorTreeUtility.h" />
     <ClInclude Include="Src\Math\BehaviourTree\BehaviourTreeBulider.h" />
@@ -297,7 +271,12 @@
     <ClInclude Include="Src\World\World.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="external\commata\LICENSE" />
+    <None Include="Assets\Map\map.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Sprite\Field\Grass_Field.bmp" />
+    <Image Include="Assets\Sprite\Field\Wall_Field.bmp" />
+    <Image Include="Assets\Sprite\Field\Water_Field.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

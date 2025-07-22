@@ -9,7 +9,7 @@
 class World : public IWorld {
 public:
 	//コンストラクタ
-	World() = default;
+	World();
 	//デストラクタ
 	~World();
 	//更新

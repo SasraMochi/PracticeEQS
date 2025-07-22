@@ -1,12 +1,18 @@
 #include "Field.h"
 
 #include "DxLib.h"
+#include "Image.h"
+
+#include <fstream>
+#include <sstream>
+#include <assert.h>
 
 Field::Field(int line_max_length, int cell_size)
-	:mLineMaxLength{ line_max_length }
+	: mLineMaxLength{ line_max_length }
 	, mCellSize{ cell_size }
 {
-
+	std::string file_path = "C:/C++/Practice_EQS/Assets/Map/map.csv";
+	load(file_path);
 }
 
 Field::~Field()
@@ -15,16 +21,65 @@ Field::~Field()
 
 void Field::draw()
 {
-#if 0
-	// ècé≤ï`âÊ
-	for (int i = 0; i < mLineMaxLength; i += mCellSize) {
-		DrawLine(i, 0, i, mLineMaxLength, GetColor(255, 255, 255));
+	for (int x = 0; x < mMaxWidth; ++x)
+	{
+		for (int y = 0; y < mMaxHeight; ++y)
+		{
+			int handle = -1;
+
+			switch (mTerrain[y][x])
+			{
+			case 0:
+				handle = Image::GRASS_FIELD;
+				break;
+			case 1:
+				handle = Image::WALL_FIELD;
+				break;
+			case 2:
+				handle = Image::WATER_FIELD;
+				break;
+			}
+
+			assert(handle != -1);
+
+			DrawGraph(x * mCellSize, y * mCellSize, handle, false);
+		}
+	}
+}
+
+void Field::load(std::string file_path)
+{
+	// csvÉtÉ@ÉCÉãÇäJÇ≠
+	std::ifstream ifs_csv_file(file_path);
+	if (!ifs_csv_file.is_open())
+	{
+		assert(!"csvÉtÉ@ÉCÉãÇ™ì«Ç›çûÇﬂÇ‹ÇπÇÒÅB");
 	}
 
-	// â°é≤ï`âÊ
-	for (int j = 0; j < mLineMaxLength; j += mCellSize) {
+	// 1çsï™Çäiî[Ç∑ÇÈïœêî
+	std::string line;
 
-		DrawLine(0, j, mLineMaxLength, j, GetColor(255, 255, 255));
+	mMaxWidth = 0;
+	mMaxHeight = 0;
+
+	// 1çsÇ∏Ç¬ì«Ç›çûÇﬁ
+	while (std::getline(ifs_csv_file, line))
+	{
+		std::istringstream linestream(line);
+		std::string cell;
+		std::vector<int> row;
+		int width = 0;
+
+		// ì«Ç›çûÇÒÇæçsÇ1ï∂éöÇ∏Ç¬intå^Ç…ïœä∑ÇµÇƒvectorÇ…äiî[Ç∑ÇÈ
+		while (std::getline(linestream, cell, ','))
+		{
+			int num = std::stoi(cell);
+			row.push_back(num);
+			width++;
+		}
+
+		if (width > mMaxWidth) mMaxWidth = width;
+		if (!row.empty()) mTerrain.push_back(row);
+		mMaxHeight++;
 	}
-#endif
 }

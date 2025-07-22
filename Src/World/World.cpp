@@ -2,6 +2,10 @@
 #include "Scene/IScene.h"
 #include "Actor/Actor.h"
 
+World::World()
+{
+}
+
 //デストラクタ
 World::~World() {
 	clear();

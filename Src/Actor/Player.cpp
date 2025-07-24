@@ -3,12 +3,15 @@
 #include "Math/Screen.h"
 #include "DxLib.h"
 
+#include "World/IWorld.h"
+
 #include <algorithm>
 
-Player::Player()
+Player::Player(IWorld* world)
 	: mHealthBar{ this , mHealth.GetHealth() }
 {
 	// èâä˙à íuÇÃê›íË
+	mpWorld = world;
 	mPosition = { Screen::Width / 2, Screen::Height / 2 };
 	mTag = "PlayerTag";
 	mName = "Player";
@@ -44,13 +47,17 @@ void Player::update(float delta_time)
 	velocity.x = static_cast<float>(CheckHitKey(KEY_INPUT_D) - CheckHitKey(KEY_INPUT_A));
 
 	// ì¸óÕÇ™Ç≥ÇÍÇƒÇ¢ÇÈÇ∆Ç´ÇÃÇ›åvéZ
-	if (velocity.magnitude() > 0.f) {
+	if (velocity.magnitude() > 0.f)
+	{
 		mVelocity = velocity.normalized() * mSpeed;
 
-		mPosition += mVelocity * delta_time;
+		auto position = mPosition + mVelocity * delta_time;
+		if (mpWorld->is_check_movable(position))
+		{
+			mPosition = position;
+			mCollider = mCollider.translate(mVelocity * delta_time);
+		}
 	}
-
-	mCollider = mCollider.translate(mVelocity * delta_time);
 
 	mHealthBar.update(delta_time, mHealth.GetHealth());
 }

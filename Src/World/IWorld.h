@@ -6,6 +6,7 @@
 
 class Actor;
 class IScene;
+class Vector2;
 
 //ワールド抽象インターフェース
 class IWorld {
@@ -28,6 +29,9 @@ public:
 
 	//シーンの取得
 	virtual IScene* scene() = 0;
+
+	// 指定先が移動できるかチェックする
+	virtual bool is_check_movable(Vector2 pos) const = 0;
 };
 
 #endif // !IWORLD_H_

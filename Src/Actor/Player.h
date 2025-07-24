@@ -10,7 +10,7 @@ const float cCoolTime = 60.f;
 
 public:
 	// コンストラクタ
-	Player();
+	Player(IWorld* world);
 
 	// デストラクタ
 	~Player();

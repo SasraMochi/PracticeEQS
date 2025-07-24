@@ -30,21 +30,33 @@ void Field::draw()
 			switch (mTerrain[y][x])
 			{
 			case 0:
-				handle = Image::GRASS_FIELD;
+				handle = Image::GROUND_FIELD;
 				break;
 			case 1:
-				handle = Image::WALL_FIELD;
-				break;
-			case 2:
-				handle = Image::WATER_FIELD;
+				handle = Image::HOLE_FIELD;
 				break;
 			}
 
 			assert(handle != -1);
 
-			DrawGraph(x * mCellSize, y * mCellSize, handle, false);
+			Vector2 draw_pos(x * mCellSize, y * mCellSize);
+
+			DrawGraph(draw_pos.x, draw_pos.y, handle, false);
 		}
 	}
+}
+
+bool Field::is_check_movable(Vector2 pos) const
+{
+	auto point = pos / mCellSize;
+
+	// ‚à‚µŽw’è‚µ‚½À•W‚ª•Ç‚È‚ç‚Îfalse‚ð•Ô‚·
+	if (mTerrain[point.y][point.x] == 1)
+	{
+		return false;
+	}
+
+	return true;
 }
 
 void Field::load(std::string file_path)
@@ -78,8 +90,16 @@ void Field::load(std::string file_path)
 			width++;
 		}
 
-		if (width > mMaxWidth) mMaxWidth = width;
-		if (!row.empty()) mTerrain.push_back(row);
+		if (width > mMaxWidth)
+		{
+			mMaxWidth = width;
+		}
+
+		if (!row.empty())
+		{
+			mTerrain.push_back(row);
+		}
+
 		mMaxHeight++;
 	}
 }

@@ -28,6 +28,9 @@ public:
 	//フィールドの登録
 	void set_field(Field* field);
 
+	// 指定先が移動できるか確かめる
+	bool is_check_movable(Vector2 pos) const override;
+
 	//アクターを追加
 	virtual void add_actor(Actor* actor) override;
 	//アクターの検索

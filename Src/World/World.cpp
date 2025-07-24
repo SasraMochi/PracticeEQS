@@ -56,6 +56,11 @@ void World::set_field(Field* field)
 	mpField = field;
 }
 
+bool World::is_check_movable(Vector2 pos) const
+{
+	return mpField->is_check_movable(pos);
+}
+
 //アクターの追加
 void World::add_actor(Actor* actor) {
 	mActorManager.add(actor);

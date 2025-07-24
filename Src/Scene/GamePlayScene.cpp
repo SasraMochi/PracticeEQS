@@ -14,7 +14,7 @@ void GamePlayScene::start() {
 	mpBehaviorTreeGraph->select_load_file();
 	auto behavior_tree_file_path = mpBehaviorTreeGraph->get_loading_file();
 
-	mWorld.add_actor(new Player());
+	mWorld.add_actor(new Player(&mWorld));
 	mWorld.add_actor(new Attacker(&mWorld, behavior_tree_file_path));
 	mWorld.set_field(new Field(1920, 64));
 }

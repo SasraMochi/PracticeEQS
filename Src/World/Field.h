@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Math/Vector2.h"
+
 #include <vector>
 #include <string>
 
@@ -10,6 +12,8 @@ public:
 	~Field();
 
 	void draw();
+
+	bool is_check_movable(Vector2 pos) const;
 
 private:
 	void load(std::string file_path);

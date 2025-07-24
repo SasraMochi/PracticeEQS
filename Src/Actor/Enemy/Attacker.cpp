@@ -10,6 +10,8 @@
 Attacker::Attacker(IWorld* world, std::string behavior_tree_file_path)
 	: mHealthBar{ this , mHealth.GetHealth() }
 {
+	mPosition = Vector2{ 128.f, 128.f };
+
 	mpWorld = world;
 	mTag = "EnemyTag";
 	mName = "Attacker";
@@ -141,6 +143,11 @@ void Attacker::set_target_position()
 void Attacker::move(float delta_time)
 {
 	Vector2 velocity = mVelocity * delta_time;
-	mPosition += velocity;
-	mCollider = mCollider.translate(velocity);
+	auto position = mPosition + velocity;
+
+	if (mpWorld->is_check_movable(position))
+	{
+		mPosition += velocity;
+		mCollider = mCollider.translate(velocity);
+	}
 }

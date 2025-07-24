@@ -15,7 +15,6 @@ public:
 	~Image() {};	//破棄するデストラクタ
 	static void Load();
 
-	static int GRASS_FIELD;
-	static int WALL_FIELD;
-	static int WATER_FIELD;
+	static int GROUND_FIELD;
+	static int HOLE_FIELD;
 };
